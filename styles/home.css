@@ -1,0 +1,71 @@
+/* =================================================================
+   HOME.CSS — titulní stránka Haaro Naturo
+   -----------------------------------------------------------------
+   Závisí na base.css (tokeny var(--…) + třídy .typo-…).
+   Obsah titulky se vkládá přes textový banner (banner.html) do
+   oblasti .welcome / .middle-banners-wrapper.
+
+   Stavíme po sekcích (viz checklist níže). Pokud soubor naroste,
+   rozdělíme komponenty do vlastních souborů (např. components.css
+   pro split bloky text+obrázek, banners.css pro textové bannery).
+   ================================================================= */
+
+/* =================================================================
+   RESET SHOPTET OBALŮ NA HOMEPAGE
+   (aby šel vlastní obsah přes celou šířku bez paddingů šablony)
+   ================================================================= */
+body.in-index .middle-banners-wrapper,
+body.in-index .middle-banners-wrapper .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.welcome > div {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.welcome div {
+    max-width: 100%;
+}
+
+.homepage-box {
+    background-color: var(--bg);
+    border-top-color: var(--bg);
+    border-bottom-color: var(--bg);
+}
+
+@media (max-width: 768px) {
+    .homepage-box.welcome-wrapper {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+/* =================================================================
+   OBSAHOVÝ WRAPPER TITULKY
+   ================================================================= */
+.hn-wrapper {
+    width: 100%;
+    color: var(--dark-grey-text);
+}
+
+.hn-wrapper * {
+    box-sizing: border-box;
+}
+
+/* =================================================================
+   SEKCE TITULNÍ STRÁNKY (doplňováno po fázích)
+   [ ] Hero (fotka + nadpis + wordmark haaro naturo + claim)
+   [ ] „Co vaše vlasy milují" — 4 karty
+   [ ] Banner byliny (celé PNG s textem)
+   [ ] Split komponenty (text + obrázek + odkaz se šipkou)
+   [ ] „Vstupte do světa…" + banner barvy
+   [ ] „Pořádáme" (workshopy a školení)
+   [ ] Kurz / Školení (split komponenty)
+   [ ] Spodní blok „Vybíráme byliny a oleje…"
+   ================================================================= */
