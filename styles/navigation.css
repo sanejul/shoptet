@@ -1,0 +1,282 @@
+/* =================================================================
+   NAVIGATION.CSS — hlavička, navigace a patička Shoptetu
+   -----------------------------------------------------------------
+   Přebíjení výchozích stylů Shoptetu pro horní lištu, hlavní menu,
+   logo, ikony (košík/hledání) a patičku.
+   Závisí na base.css (proměnné var(--…)).
+
+   POZN.: Toto je zatím přenesený stávající stav (sjednocení vzhledu
+   se starým webem). Kompletní redesign navigace podle Figmy (vč.
+   opravy rozbalování dropdownu podkategorií) přijde ve fázi navigace.
+   ================================================================= */
+
+/* ---- Pozadí a okraje lišt ---- */
+.custom-footer,
+.footer-links-icons,
+.footer-bottom,
+.menu-level-1,
+.navigation-wrapper,
+.top-navigation-bar,
+.top-navigation-contacts,
+.latest-contribution-wrapper,
+.content-wrapper-in,
+#header {
+    background-color: var(--bg) !important;
+}
+
+.custom-footer,
+.footer-bottom,
+.footer-links-icons {
+    border-color: var(--dark) !important;
+}
+
+/* ---- Horní lišta s kontakty ---- */
+.top-navigation-bar {
+    padding: 2rem 0;
+    min-height: 25px !important;
+}
+
+.top-navigation-bar * {
+    font-size: 0.8rem;
+    color: var(--dark) !important;
+}
+
+#top-navigation-bar {
+    display: none !important;
+}
+
+.top-navigation-contacts a.project-phone:before,
+.top-navigation-contacts a.project-email:before {
+    display: none;
+    content: none;
+}
+
+/* ---- Hlavní menu ---- */
+.navigation-in > ul > li,
+.navigation-in > ul > li > a {
+    color: var(--dark) !important;
+    text-transform: lowercase;
+    border: none;
+}
+
+.menu-level-1 {
+    color: var(--dark) !important;
+}
+
+.navigation-in a {
+    text-transform: lowercase !important;
+}
+
+.navigation-buttons a[data-target=cart] {
+    color: var(--dark);
+}
+
+.navigation-buttons a[data-target=cart] i {
+    color: var(--bg) !important;
+    background-color: var(--dark) !important;
+    border: 1px solid var(--dark) !important;
+}
+
+/* ---- Hledání ---- */
+div.search form input.search-input,
+.search .btn-default {
+    display: none !important;
+}
+
+/* ---- Drobečková navigace ---- */
+.breadcrumbs span {
+    text-transform: lowercase !important;
+}
+
+.breadcrumbs {
+    border-bottom-style: none;
+}
+
+.breadcrumbs-wrapper {
+    border-bottom: 1px solid var(--gray);
+}
+
+/* ---- Patička ---- */
+.footer-bottom a img {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.footer-bottom .title {
+    opacity: 0.3 !important;
+}
+
+/* ---- Hamburger (mobil) ---- */
+.responsive-tools > a[data-target=navigation]:before {
+    color: var(--dark) !important;
+    background-color: transparent !important;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 767px) {
+    #header .cart-count {
+        top: -35px !important;
+    }
+}
+
+/* =================================================================
+   DESKTOP LAYOUT HLAVIČKY (menu vlevo – logo uprostřed – ikony vpravo)
+   ================================================================= */
+@media (min-width: 992px) {
+
+    .top-navigation-bar {
+        border-bottom: none;
+    }
+
+    /* 1. Hlavní kontejner hlavičky */
+    #header .navigation-wrapper {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        height: 70px;
+        padding: 0 15px;
+    }
+
+    #header {
+        border-top: 1px solid var(--dark);
+        border-bottom: 1px solid var(--dark);
+    }
+
+    /* 2. Menu (vlevo) */
+    #navigation {
+        order: 1;
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        background: transparent !important;
+        margin: 0 !important;
+        border: none !important;
+    }
+
+    .menu-level-1 {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .menu-level-1 > li {
+        border: none !important;
+    }
+
+    .menu-level-1 > li > a {
+        font-family: 'Fabrikat', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        text-transform: lowercase !important;
+        padding: 10px 15px !important;
+        color: var(--dark) !important;
+        background: transparent !important;
+    }
+
+    .navigation-in ul li a b {
+        font-weight: 700;
+    }
+
+    .menu-level-1 > li:first-child > a {
+        padding-left: 0 !important;
+    }
+
+    /* 3. Logo (uprostřed, absolutně) */
+    .site-name-wrapper {
+        position: absolute;
+        left: 50%;
+        top: -75%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        margin: 0 !important;
+        width: auto !important;
+        text-align: center;
+    }
+
+    .site-name-wrapper img {
+        max-height: 55px;
+        width: auto;
+    }
+
+    .dropdown-menu > li > a {
+        padding: 10px 20px;
+    }
+
+    /* 4. Ikony (vpravo) */
+    .header-top {
+        order: 3;
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background: transparent !important;
+        padding: 0 !important;
+    }
+
+    /* 5. Vyhledávání (skryté tlačítko) */
+    div.search {
+        display: none !important;
+    }
+
+    div.search form button.search-button {
+        display: none !important;
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        width: 30px;
+        height: 30px;
+        color: var(--dark) !important;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    div.search form button.search-button i {
+        display: none !important;
+        color: var(--dark) !important;
+    }
+
+    /* 6. Košík */
+    .navigation-buttons {
+        float: none !important;
+        display: flex;
+        align-items: center;
+        margin: 0 !important;
+    }
+
+    .navigation-buttons a.btn {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        color: var(--dark) !important;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .navigation-buttons .cart-price {
+        display: none !important;
+    }
+
+    /* Dropdown (2. úroveň) */
+    .menu-level-2 {
+        width: 100vw;
+        padding: 6rem 0 4rem 0;
+        background-color: var(--bg) !important;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+
+    .menu-level-2 li a {
+        color: var(--dark) !important;
+        display: block !important;
+    }
+
+    .admin-logged .popup-widget.cart-widget {
+        top: 18%;
+    }
+}

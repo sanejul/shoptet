@@ -1,0 +1,124 @@
+/* =================================================================
+   BASE.CSS — designové tokeny + typografie (Haaro Naturo)
+   -----------------------------------------------------------------
+   Zdroj pravdy: Figma „HAARO START 01" (panel Variables).
+   Tady jsou definované VŠECHNY barvy a typografické styly z návrhu.
+   Proměnné var(--…) i třídy .typo-… se používají ve všech ostatních
+   CSS souborech i v banner.html.
+
+   Pozn.: Fabrikat má ve fonts.css každý řez jako samostatnou rodinu
+   (proto font-family: 'Fabrikat Bold' apod. a font-weight zůstává 400).
+   Inter má skutečné váhy 400 a 700.
+   ================================================================= */
+
+:root {
+    /* ---- BARVY (názvy přímo z Figmy) ---- */
+    --white:          #ffffff; /* Figma: White */
+    --black:          #000000; /* Figma: Black */
+    --dark-grey-text: #484848; /* Figma: Dark grey TEXT — hlavní text a nadpisy */
+    --maly-text:      #5b5b5b; /* Figma: Maly text — menší / sekundární text */
+    --rtenka:         #c45c63; /* Figma: Rtěnka — akcent (odkazy, tlačítka) */
+
+    /* ---- FUNKČNÍ BARVY E-SHOPU ----
+       Nejsou součástí Figma palety titulní stránky. Používají je
+       přebíjené stránky Shoptetu (košík, stavy, formuláře). Kompletní
+       redesign těchto stránek (a sjednocení s paletou výše) přijde
+       později — viz navigation.css / style.css. */
+    --bg:    #ffffff;
+    --dark:  #111111;
+    --gray:  #767676;
+    --green: #24ae60;
+    --red:   #e74b3b;
+}
+
+/* =================================================================
+   GLOBÁLNÍ ZÁKLAD
+   ================================================================= */
+body {
+    color: var(--dark-grey-text);
+    background-color: var(--bg);
+    font-family: 'Inter', sans-serif;  /* běžný text = Inter (dle Figmy) */
+    overflow-x: hidden;                /* full-bleed bannery nesmí roztáhnout stránku do boku */
+}
+
+/* =================================================================
+   TYPOGRAFIE — názvy stylů přesně dle Figmy
+   ================================================================= */
+
+/* H1 — Fabrikat Bold 56 / 56 / -1 % */
+.typo-h1 {
+    font-family: 'Fabrikat Bold', sans-serif;
+    font-size: 56px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+}
+
+/* H2 dark — Fabrikat Regular 46 / 44 / -1 % */
+.typo-h2-dark {
+    font-family: 'Fabrikat', sans-serif;
+    font-size: 46px;
+    line-height: 44px;
+    letter-spacing: -0.01em;
+    color: var(--dark-grey-text);
+}
+
+/* H2 white — Fabrikat Black 46 / 56 / -1 % (text na fotce) */
+.typo-h2-white {
+    font-family: 'Fabrikat Black', sans-serif;
+    font-size: 46px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    color: var(--white);
+}
+
+/* H3 dark grey — Fabrikat Medium 36 / 1.25 / -1 % */
+.typo-h3-dark-grey {
+    font-family: 'Fabrikat Medium', sans-serif;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--dark-grey-text);
+}
+
+/* H3 hořčice — Fabrikat Bold 36 / 1.25 / -1 %
+   Barva je kontextová (v návrhu bílá na fotce) — ve Figmě pro
+   „hořčici" samostatná barevná proměnná není, proto ji tu nenastavuji. */
+.typo-h3-horcice {
+    font-family: 'Fabrikat Bold', sans-serif;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+/* P — Inter Regular 17 / 1.6 */
+.typo-p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.6;
+}
+.typo-p strong,
+.typo-p b { font-weight: 700; }
+
+/* =================================================================
+   BAREVNÉ UTILITY (když potřebuju barvu nezávisle na typu písma)
+   ================================================================= */
+.text-white     { color: var(--white); }
+.text-black     { color: var(--black); }
+.text-dark-grey { color: var(--dark-grey-text); }
+.text-maly      { color: var(--maly-text); }
+.text-rtenka    { color: var(--rtenka); }
+
+/* =================================================================
+   PŘEPÍNÁNÍ ZLOMŮ ŘÁDKŮ DESKTOP / MOBIL
+   Mobilní návrh teprve vznikne — mechanismus je připravený dopředu.
+   V HTML:  …slovo<br class="br-desktop">další…   (zlom jen na desktopu)
+            …slovo<br class="br-mobile">další…    (zlom jen na mobilu)
+   ================================================================= */
+.br-mobile  { display: none; }
+.br-desktop { display: inline; }
+
+@media (max-width: 768px) {
+    .br-desktop { display: none; }
+    .br-mobile  { display: inline; }
+}
