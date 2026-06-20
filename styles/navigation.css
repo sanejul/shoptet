@@ -36,10 +36,10 @@
     min-height: 25px !important;
 }
 
-.top-navigation-bar * {
-    font-size: 0.8rem;
-    color: var(--dark) !important;
-}
+    .top-navigation-bar * {
+        font-size: 0.8rem;
+        color: var(--dark-grey-text) !important;
+    }
 
 #top-navigation-bar {
     display: none !important;
@@ -139,8 +139,8 @@ div.search form input.search-input,
     }
 
     #header {
-        border-top: 1px solid var(--dark);
-        border-bottom: 1px solid var(--dark);
+        border-top: 1px solid var(--dark-grey-text);    /* linka mezi horní lištou a menu */
+        border-bottom: 1px solid var(--dark-grey-text); /* linka mezi menu a obsahem */
     }
 
     /* 2. Menu (vlevo) */
@@ -157,6 +157,7 @@ div.search form input.search-input,
     .menu-level-1 {
         display: flex;
         flex-wrap: wrap;
+        gap: 41px;            /* mezera mezi položkami menu dle Figmy */
         padding: 0 !important;
         margin: 0 !important;
     }
@@ -171,7 +172,7 @@ div.search form input.search-input,
         font-weight: 700;
         font-size: 1rem;
         text-transform: lowercase !important;
-        padding: 10px 15px !important;
+        padding: 10px 0 !important;   /* rozteč řeší gap 41px na .menu-level-1 */
         color: var(--dark-grey-text) !important;
         background: transparent !important;
     }
@@ -202,7 +203,7 @@ div.search form input.search-input,
     }
 
     .site-name-wrapper img {
-        max-height: 55px;
+        max-height: 75px;   /* výška loga dle Figmy (75x75) */
         width: auto;
     }
 
