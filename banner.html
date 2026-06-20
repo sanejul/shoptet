@@ -1,328 +1,171 @@
+<!-- =================================================================
+     HAARO NATURO — titulní stránka (vkládá se přes textový banner)
+     Styly: base.css + home.css (+ fonts.css). Obrázky se nahrávají do
+     správce souborů Shoptetu do /user/documents/upload/assets/home/.
+     Odkazy (href="#") je potřeba doplnit na reálné URL kategorií/stránek.
+     ================================================================= -->
 <div class="hn-wrapper">
-
-    <section class="hn-hero">
-        <div class="hn-hero-content">
-            <h1 class="typo-fabrikat-h2">
-                <span
-                        class="typo-freight-h2">Vybíráme byliny a oleje<br>u lokálních bio pěstitelů.<br>
-                    Kombinujeme je<br>se špičkovými funkčními surovinami<br>pro mimořádný účinek.</span>
-            </h1>
-        </div>
-        <div class="hn-hero-image">
-            <img src="https://759082.myshoptet.com/user/documents/upload/assets/homepage-banner.jpg"
-                 alt="Přírodní péče o vlasy">
-        </div>
-    </section>
-
-    <div class="hn-ticker-wrap">
-        <div class="hn-ticker text-hn-blue">
-            <span class="hn-ticker-item typo-fabrikat-ticker">přírodní péče o vlasy - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">lokální - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">funkční - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">bio - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">přírodní péče o vlasy - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">lokální - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">funkční - </span>
-            <span class="hn-ticker-item typo-fabrikat-ticker">bio - </span>
-        </div>
-    </div>
-
     <div class="hn-container">
 
-        <div style="margin-top: 4rem; margin-bottom: 2rem;">
-            <h2 class="typo-freight-h2">Co vaše vlasy milují</h2>
-            <hr class="line-separator">
-        </div>
+        <!-- 1) HERO -->
+        <section class="hn-hero">
+            <img class="hn-hero__bg" src="/user/documents/upload/assets/home/hero.jpg"
+                 alt="Přírodní vlasová kosmetika Haaro Naturo">
+            <h1 class="hn-hero__title typo-h1">Vyvíjíme a vyrábíme<br class="br-desktop">
+                přírodní vlasovou kosmetiku</h1>
+            <img class="hn-hero__wordmark" src="/user/documents/upload/assets/home/wordmark-haaro-naturo.svg"
+                 alt="haaro naturo">
+            <p class="hn-hero__claim">Navrženo pro vaše vlasy<br class="br-desktop">
+                Testováno v kadeřnickém provozu<br class="br-desktop">
+                Vyrobeno s důrazem na lokální suroviny</p>
+        </section>
 
-        <div class="hn-grid-4">
-            <div class="hn-cat-card">
-                <a>
-                    <img src="https://www.haaro-naturo.cz/antistatic-sprej/" alt="Hydrataci">
-                    <div class="typo-fabrikat-h2">hydrataci</div>
+        <!-- 2) CO VAŠE VLASY MILUJÍ -->
+        <section class="hn-section">
+            <h2 class="hn-section__title typo-h2-dark">Co vaše vlasy milují</h2>
+            <div class="hn-cards">
+                <a class="hn-card hn-card--hydratace" href="#">
+                    <div class="hn-card__media">
+                        <img src="/user/documents/upload/assets/home/hydratace.jpg" alt="Hydrataci">
+                        <h3 class="hn-card__title typo-h3-horcice">Hydrataci</h3>
+                    </div>
+                    <p class="hn-card__desc typo-p">Co kdyby vlasy byly stále hydratované, jemné na dotek, ale přitom neztratily objem?</p>
+                </a>
+                <a class="hn-card hn-card--objem" href="#">
+                    <div class="hn-card__media">
+                        <img src="/user/documents/upload/assets/home/objem.jpg" alt="Objem">
+                        <h3 class="hn-card__title typo-h3-horcice">Objem</h3>
+                    </div>
+                    <p class="hn-card__desc typo-p">Objem a fixace bez slepení, pro jemné i silné vlasy</p>
+                </a>
+                <a class="hn-card hn-card--uhlazeni" href="#">
+                    <div class="hn-card__media">
+                        <img src="/user/documents/upload/assets/home/uhlazeni.jpg" alt="Uhlazení">
+                        <h3 class="hn-card__title typo-h3-horcice">Uhlazení</h3>
+                    </div>
+                    <p class="hn-card__desc typo-p">Zkrocení neposlušných vlasů a zvýraznění jejich přirozené krásy</p>
+                </a>
+                <a class="hn-card hn-card--cistota" href="#">
+                    <div class="hn-card__media">
+                        <img src="/user/documents/upload/assets/home/cistota.jpg" alt="Čistotu">
+                        <h3 class="hn-card__title typo-h3-horcice">Čistotu</h3>
+                    </div>
+                    <p class="hn-card__desc typo-p">Mytí přírodní cestou bez prázdných slibů</p>
                 </a>
             </div>
-            <div class="hn-cat-card">
-                <a>
-                    <img src="https://www.haaro-naturo.cz/kondicionery-a-regenerace/?pv55=184" alt="Objem">
-                    <div class="typo-fabrikat-h2">objem</div>
-                </a>
-            </div>
-            <div class="hn-cat-card">
-                <a>
-                    <img src="https://www.haaro-naturo.cz/sampony/" alt="Čistotu">
-                    <div class="typo-fabrikat-h2">čistotu</div>
-                </a>
-            </div>
-            <div class="hn-cat-card">
-                <a>
-                    <img src="https://759082.myshoptet.com/user/documents/upload/assets/uhlazeni-1.jpg" alt="Uhlazení">
-                    <div class="typo-fabrikat-h2">uhlazení</div>
-                </a>
-            </div>
-        </div>
+        </section>
 
-        <div class="circle-container">
-            <div class="hn-split-text" style="text-align: right;">
-                <h3 class="typo-fabrikat-h3">vlastní</h3>
-            </div>
-            <div class="hn-spin-badge-container">
-                <img src="https://www.haaro-naturo.cz/krem-na-vlasy/" class="hn-spin-badge"
-                     alt="vlastní produkty">
-            </div>
-            <div class="hn-split-text" style="text-align: left;">
-                <h3 class="typo-fabrikat-h3">produkty</h3>
-            </div>
-        </div>
+        <!-- 3) BANNER BYLINY (text je součástí obrázku) -->
+        <img class="hn-banner" src="/user/documents/upload/assets/home/banner_byliny.jpg"
+             alt="Věříme bylinám, co rostou kolem – o vlasy nám pečují po generace">
 
-        <hr class="line-separator">
+        <!-- 4) SPLIT SEKCE: typy vlasů -->
+        <section class="hn-splits">
+            <div class="hn-split">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Jemné a normální vlasy</h3>
+                    <p class="hn-split__text typo-p">Jemné vlasy jsou u nás v kadeřnictví denní chleba, a tak víme, že bývají náchylné k lámání a poškození, snadno ztrácí objem a plihnou. Je důležité používat kvalitní zpevňující produkty, které zbytečně nezatěžují, hydratovat je a pravidelně zastřihovat. Proto jsme vytvořili objemové přípravky speciálně pro tento typ vlasů.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">získat objem</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/jemne-vlasy.jpg" alt="Jemné a normální vlasy"></div>
+            </div>
+            <div class="hn-split hn-split--reversed">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Silné vlasy a kudrny</h3>
+                    <p class="hn-split__text typo-p">Kudrnaté vlasy často budí obdiv. Málokdo si ale uvědomuje, že patří k nejnáročnějším na péči. Zaměřujeme ji na definici pramenů, podporu vlnění, pružnost, lesk a výživu - v široké škále produktů, respektující tento typ vlasů.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">vyživit</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/silne-vlasy.jpg" alt="Silné vlasy a kudrny"></div>
+            </div>
+            <div class="hn-split">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Lupy a mastné vlasy</h3>
+                    <p class="hn-split__text typo-p">Nadměrné maštění vlasů a lupy nejsou zrovna příjemná témata, ale u nás v kadeřnictví se těmto problémům věnujeme opravdu často. Máme díky tomu vytvořenou cílenou řadu šamponů a péče o problematickou vlasovou pokožku, pro obnovu její rovnováhy a svěží pocit.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">co pomůže</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/mastne-vlasy.jpg" alt="Lupy a mastné vlasy"></div>
+            </div>
+        </section>
 
-        <div class="hn-section-split reversed">
-            <div class="hn-split-image">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/jemne.jpg" alt="Jemné vlasy">
-            </div>
-            <div class="hn-split-text">
-                <h3 class="typo-freight-h2">Jemné a normální vlasy</h3>
-                <p class="typo-fabrikat-body">
-                    Jemné vlasy jsou u nás v kadeřnictví denní chleba a tak víme, že bývají náchylné k lámání a
-                    poškození, snadno ztrácí objem a plihnou. Je důležité <span class="typo-fabrikat-body-bold">používat kvalitní zpevňující produkty</span>,
-                    které zbytečně nezatěžují, hydratovat je a pravidelně zastřihovat. Proto jsme vytvořili <span
-                        class="typo-fabrikat-body-bold">objemové přípravky
-                    speciálně pro tento typ vlasů.</span>
-                </p>
-                <a href="https://www.haaro-naturo.cz/vlasova-kosmetika/?pv55=184" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">prohlédnout</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
+        <!-- 5) VSTUPTE DO SVĚTA + BANNER BARVY -->
+        <section class="hn-section">
+            <h2 class="hn-section__title typo-h2-dark">Vstupte do světa přírodního barvení vlasů</h2>
+            <img class="hn-banner" src="/user/documents/upload/assets/home/banner_barvy.jpg"
+                 alt="Tisíce let staré barvy – a přesto stále v módě">
+        </section>
 
-        <hr class="line-separator">
+        <!-- 6) SPLIT SEKCE: barvení -->
+        <section class="hn-splits">
+            <div class="hn-split">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Barvení doma</h3>
+                    <p class="hn-split__text typo-p">Zkuste si své vlasy představit lesklejší, pevnější, zdravé a nadýchané – můžete je mít. Není to hned, ale změnu poznáte už po prvním barvení. A zvládnete to i sami doma. Barvu si u nás vyberete snadno – u každého odstínu najdete popis, jak bude vypadat na různých typech vlasů.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">vybrat barvu</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/barveni-doma.jpg" alt="Barvení doma"></div>
+            </div>
+            <div class="hn-split hn-split--reversed">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Barvení v salonu</h3>
+                    <p class="hn-split__text typo-p">Co kdyby s každým barvením byly vlasy nejen krásnější, ale i zdravější? To umí zařídit přírodní barvy na vlasy - a dávno to není jen henna. Rostlinných barev je nepřeberné množství a stejně tak tónů, které umí vytvořit. Nemusíte dělat kompromisy. Využijte dlouholeté zkušenosti našeho salonu a s důvěrou se nechte hýčkat nejčistší kosmetikou v rukou profesionálů.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">do kadeřnictví</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/barveni-v-salonu.jpg" alt="Barvení v salonu"></div>
+            </div>
+            <div class="hn-split">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Konzultace</h3>
+                    <p class="hn-split__text typo-p">Uvažujete o přírodním barvení, ale stále nevíte, jak začít? Jak budou tyto barvy vypadat na vašich vlasech? Nebo už se barvíte, ale stále to není ono? Pomůžeme vám. Na videokonzultaci probereme vše okolo vašich vlasů. Které odstíny by pro vás byly vhodné, jak barvit i na co si dát pozor. Všechna doporučení vám sepíšeme a pošleme, abyste se k nim mohli kdykoli vrátit.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">objednat se</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/konzultace.jpg" alt="Konzultace"></div>
+            </div>
+        </section>
 
-        <div class="hn-section-split">
-            <div class="hn-split-image">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/kudrnate.jpg" alt="Silné vlasy">
+        <!-- 7) POŘÁDÁME (workshopy a školení) -->
+        <section class="hn-feature">
+            <img class="hn-feature__bg" src="/user/documents/upload/assets/home/workshopy.jpg" alt="">
+            <h2 class="hn-feature__title typo-h2-white">Pořádáme</h2>
+            <div class="hn-feature__panel">
+                <h3 class="typo-h3-horcice">workshopy a školení</h3>
+                <p class="hn-feature__text typo-p">Přírodní rostlinné barvy dokážou na vlasech vykouzlit krásné a přirozené odstíny. Vlasům prospívají a udržují je zdravé, přesto jsou pro běžná kadeřnictví stále velká neznámá. A to bychom chtěli změnit – ať jste kadeřnice, nebo se chystáte na domácí barvení, naše kurzy vám dají pevný základ, na kterém můžete stavět. Tak co, jdete do toho?</p>
             </div>
-            <div class="hn-split-text">
-                <h3 class="typo-freight-h2">Silné vlasy a kudrny</h3>
-                <p class="typo-fabrikat-body">
-                    Kudrnaté vlasy jsou často předmětem obdivu. Málokdo si ale uvědomuje, že patří k těm <span
-                        class="typo-fabrikat-body-bold">nejnáročnějším
-                    na péči.</span> Ta je u nás zaměřená na definici jednotlivých pramenů, podporu vlnění, pružnost,
-                    lesk a
-                    výživu. Máme tak <span class="typo-fabrikat-body-bold">širokou škálu funkčních produktů respektující tento typ vlasů.</span>
-                </p>
-                <a href="https://www.haaro-naturo.cz/vlasova-kosmetika/?pv55=202" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">prohlédnout</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
+        </section>
 
-        <hr class="line-separator">
+        <!-- 8) KURZ / ŠKOLENÍ -->
+        <section class="hn-splits">
+            <div class="hn-split">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Kurz přírodního barvení vlasů</h3>
+                    <p class="hn-split__text typo-p">Jak začít s přírodním barvením vlasů, a nesplakat nad výsledkem? Jak to namíchat, nanést, zabalit – ale hlavně, jak si barvu vybrat? Ukážeme vám, jak na to. A jako bonus si odvezete nejen tištěnou brožuru, ale i vlastní barvu na míru.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">najít termín</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/kurz-barveni.jpg" alt="Kurz přírodního barvení vlasů"></div>
+            </div>
+            <div class="hn-split hn-split--reversed">
+                <div class="hn-split__body">
+                    <h3 class="hn-split__title typo-h3-dark-grey">Školení pro kadeřnice</h3>
+                    <p class="hn-split__text typo-p">S nadsázkou občas říkám, že přírodní barvy na vlasy zajímají každého, s výjimkou kadeřnic. Nám pak volají nešťastné zákaznice z druhého konce republiky, že nemají kam chodit. Nebojte se jít trendům naproti a ovládněte toto vzácné umění v rámci řemesla. Přidejte se k těm několika málo salonům, na které je možné se s důvěrou obrátit.</p>
+                    <a class="hn-btn" href="#"><span class="hn-btn__label">najít termín</span><span class="hn-btn__line"></span></a>
+                </div>
+                <div class="hn-split__media"><img src="/user/documents/upload/assets/home/skoleni.jpg" alt="Školení pro kadeřnice"></div>
+            </div>
+        </section>
 
-        <div class="hn-section-split reversed">
-            <div class="hn-split-image">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/lupy.jpg" alt="Lupy a mastné vlasy">
-            </div>
-            <div class="hn-split-text">
-                <h3 class="typo-freight-h2">Lupy a mastné vlasy</h3>
-                <p class="typo-fabrikat-body">
-                    Nadměrné maštění vlasů a lupy nejsou zrovna příjemná témata, ale u nás v kadeřnictví se těmto
-                    problémům <span class="typo-fabrikat-body-bold">věnujeme opravdu často.</span> Máme díky tomu
-                    vytvořenou cílenou řadu šamponů a péče o
-                    problematickou vlasovou pokožku, která <span class="typo-fabrikat-body-bold">obnovuje její rovnováhu a vrací svěží pocit.</span>
-                </p>
-                <a href="https://www.haaro-naturo.cz/vlasova-kosmetika/?pv55=199,205" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">prohlédnout</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
+        <!-- 9) VĚRNOSTNÍ PROGRAM -->
+        <section class="hn-loyalty">
+            <h3 class="typo-h3-dark-grey">věrnostní</h3>
+            <img class="hn-loyalty__badge" src="/user/documents/upload/assets/home/vernostni-program.svg"
+                 alt="věrnostní program pro stálé zákazníky">
+            <h3 class="typo-h3-dark-grey">program</h3>
+        </section>
 
-        <hr class="line-separator">
-
-        <div class="circle-container">
-            <div class="hn-split-text" style="text-align: right;">
-                <h3 class="typo-fabrikat-h3">doprava</h3>
-            </div>
-            <div class="hn-spin-badge-container">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/doprava-1.svg" class="hn-spin-badge"
-                     alt="Produkty">
-            </div>
-            <div class="hn-split-text" style="text-align: left;">
-                <h3 class="typo-fabrikat-h3">zdarma</h3>
-            </div>
-        </div>
-    </div>
-
-    <div class="hn-full-banner">
-        <img src="https://759082.myshoptet.com/user/documents/upload/assets/separator-img/rebricek.jpg"
-             alt="přírodní barvení">
-        <div class="hn-banner-text typo-fabrikat-h1">přírodní barvení</div>
-    </div>
-
-    <div class="hn-container">
-        <div class="hn-section-split reversed">
-            <div class="hn-split-image">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/barveni-doma.jpg"
-                     alt="Barvení doma">
-            </div>
-            <div class="hn-split-text">
-                <h3 class="typo-freight-h2">Barvení doma</h3>
-                <p class="typo-fabrikat-body">
-                    Výběr přírodní barvy na vlasy je u nás jednoduchý. Díky tomu, že všechny nabízené odstíny sami
-                    používáme v kadeřnictví, <span
-                        class="typo-fabrikat-body-bold">víme přesně jak obarví různé vlasy,</span> a mohli jsme k nim
-                    vytvořit <span class="typo-fabrikat-body-bold">unikátní popisy.</span> Také
-                    můžete využít jediněčnou službu - videokonzultaci a <span class="typo-fabrikat-body-bold">namíchání vlastního odstínu</span>
-                    přímo na míru.
-                </p>
-                <a href="https://www.haaro-naturo.cz/prirodni-barvy-na-vlasy-3/" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">prohlédnout</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
-
-        <hr class="line-separator">
-
-        <div class="hn-section-split">
-            <div class="hn-split-image">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/barveni-v-salonu.jpg"
-                     alt="Barvení v salonu">
-            </div>
-            <div class="hn-split-text">
-                <h3 class="typo-freight-h2">Barvení v salonu</h3>
-                <p class="typo-fabrikat-body">
-                    Rostlinné barvy na vlasy používáme v našem salonu už mnoho let. Díky bohatým zkušenostem <span
-                        class="typo-fabrikat-body-bold">si poradíme
-                    i se silně prošedivělými nebo zcela bílými vlasy</span> - vždy šetrně, přírodně a bez chemie.
-                    Výsledkem
-                    jsou zdravé vlasy s odstínem, který působí <span class="typo-fabrikat-body-bold">luxusně</span> a
-                    přitom <span class="typo-fabrikat-body-bold">naprosto přirozeně.</span>
-                </p>
-                <p class="typo-fabrikat-body">
-                    Otevřete novou kapitolu péče v salonu - relaxujte nejen vy, ale i vaše vlasy.
-                </p>
-                <a href="https://www.haaro-naturo.cz/kadernictvi/" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">prohlédnout</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
-
-        <hr class="line-separator">
-
-        <div class="hn-section-split reversed">
-            <div class="hn-split-image">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/konzultace-1.jpg" alt="Konzultace">
-            </div>
-            <div class="hn-split-text">
-                <h3 class="typo-freight-h2">Konzultace</h3>
-                <p class="typo-fabrikat-body">
-                    <span class="typo-fabrikat-body-bold">Zvažujete přírodní barvení,</span> ale stále nevíte <span
-                        class="typo-fabrikat-body-bold">kde začít?</span> Přemýšlíte, jak budou rostlinné barvy
-                    vypadat právě na vašich vlasech? Nebo už je používáte, ale stále to není ono?
-                </p>
-                <p class="typo-fabrikat-body">
-                    Ráda vás tímto procesem provedu. Během osobní video konzultace společně <span
-                        class="typo-fabrikat-body-bold">probereme vše, co se týká
-                    vašich vlasů</span> – od výběru vhodných odstínů až po správný postup barvení a drobnosti, na které
-                    je
-                    dobré si dát pozor. <span class="typo-fabrikat-body-bold">Všechna doporučení následně sepíšu a pošlu, abyste se k nim mohli kdykoli
-                    vracet.</span>
-                </p>
-                <a href="https://www.haaro-naturo.cz/konzultace-prirodni-barveni-vlasu-2/" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">prohlédnout</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
-
-        <hr class="line-separator">
+        <!-- 10) SPODNÍ CTA: lokální suroviny -->
+        <section class="hn-cta">
+            <img class="hn-cta__bg" src="/user/documents/upload/assets/home/lokalni-suroviny.jpg" alt="">
+            <h2 class="hn-cta__title typo-h2-white">Vybíráme byliny a oleje u lokálních bio pěstitelů. Kombinujeme je se špičkovými funkčními surovinami pro mimořádný účinek.</h2>
+            <a class="hn-btn hn-btn--light hn-cta__btn" href="#"><span class="hn-btn__label">kde nám to roste</span><span class="hn-btn__line"></span></a>
+        </section>
 
     </div>
-
-    <div class="circle-container">
-        <div class="hn-split-text" style="text-align: right;">
-            <h3 class="typo-fabrikat-h3">věrnostní</h3>
-        </div>
-        <div class="hn-spin-badge-container">
-            <img src="https://759082.myshoptet.com/user/documents/upload/assets/klub-1.svg" class="hn-spin-badge"
-                 alt="Produkty">
-        </div>
-        <div class="hn-split-text" style="text-align: left;">
-            <h3 class="typo-fabrikat-h3">program</h3>
-        </div>
-    </div>
-
-    <div class="hn-full-banner mb-4">
-        <img src="https://759082.myshoptet.com/user/documents/upload/assets/separator-img/kopriva.jpg" alt="Vzdělávání">
-        <div class="hn-banner-text typo-fabrikat-h1">vzdělávání</div>
-    </div>
-
-    <div class="hn-container">
-        <div class="hn-section-text-split">
-            <div class="hn-split-text-h2">
-                <h3 class="typo-freight-h2">Workshopy a školení</h3>
-            </div>
-            <div class="hn-split-text-body">
-
-                <p class="typo-fabrikat-body mb-4">
-                    Přírodní rostlinné barvy na vlasy jsou stále velká neznámá. A to bychom chtěli změnit - šířit
-                    povědomí o tom, že tento způsob barvení vlasům nejen prospívá, ale dokáže vykouzlit krásné a
-                    přirozené odstíny.
-                </p>
-                <p class="typo-fabrikat-body">
-                    <span class="typo-fabrikat-body-bold">Vyberte se kurz podle svých potřeb</span> - ať jste kadeřníci
-                    nebo se chystáte na domácí barvení - dáme vám
-                    vždy pevný základ, na kterém můžete začít stavět.
-                </p>
-                <p class="typo-fabrikat-body-bold">
-                    Tak co, jdete do toho?
-                </p>
-            </div>
-        </div>
-
-        <div class="hn-grid-3">
-            <div class="grid-item">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/kurzy-1.jpg"
-                     class="hn-img-fluid mb-4"
-                     alt="Kurz přírodního barvení vlasů">
-                <hr class="line-separator" style="margin-top: 1rem !important; margin-bottom: 1rem;">
-                <h3 class="typo-freight-h3">Kurz přírodního barvení vlasů</h3>
-                <p class="typo-fabrikat-body">
-                    <span class="typo-fabrikat-body-bold">Jak začít s přírodním barvením vlasů,</span> a nesplakat nad
-                    výsledkem? Jak to namíchat, nanést, zabalit, ale hlavně - jak si barvu vybrat?
-                </p>
-                <p class="typo-fabrikat-body">
-                    Ukážeme vám, jak na to. <span class="typo-fabrikat-body-bold">A jako bonus si odvezete nejen tištěnou brožuru, ale i vlastní barvu na
-                    míru.</span>
-                </p>
-                <a href="https://www.haaro-naturo.cz/kurz-barveni-vlasu/" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">zjistit víc</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-            <div class="grid-item">
-                <img src="https://759082.myshoptet.com/user/documents/upload/assets/skoleni.jpg"
-                     class="hn-img-fluid mb-4" alt="Školení pro kadeřnice">
-                <hr class="line-separator" style="margin-top: 1rem !important; margin-bottom: 1rem;">
-                <h3 class="typo-freight-h3">Školení pro kadeřnice</h3>
-                <p class="typo-fabrikat-body">S nadsázkou občas říkám, že přírodní barvy zajímají každého s výjímkou
-                    kadeřnic. Nám pak volají nešťastné zákaznice z druhého konce republiky, že nemají kam chodit.
-                </p>
-                <p class="typo-fabrikat-body">
-                    Nebojte se jít <span class="typo-fabrikat-body-bold">trendům naproti</span> a ovládněte toto vzácné
-                    umění v rámci řemesla. Přidejte se <span class="typo-fabrikat-body-bold">k těm
-                    několika málo salonům, na které je možné se s důvěrou obrátit.</span>
-                </p>
-                <a href="https://www.haaro-naturo.cz/skoleni-pro-kadernice/" class="hn-arrow-link">
-                    <span class="typo-fabrikat-ui hn-btn-text">zjistit víc</span>
-                    <span class="hn-arrow-graphic"></span>
-                </a>
-            </div>
-        </div>
-    </div>
-
 </div>

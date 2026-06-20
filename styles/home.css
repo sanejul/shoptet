@@ -2,17 +2,18 @@
    HOME.CSS — titulní stránka Haaro Naturo
    -----------------------------------------------------------------
    Závisí na base.css (tokeny var(--…) + třídy .typo-…).
-   Obsah titulky se vkládá přes textový banner (banner.html) do
-   oblasti .welcome / .middle-banners-wrapper.
+   Obsah titulky se vkládá přes textový banner (banner.html).
 
-   Stavíme po sekcích (viz checklist níže). Pokud soubor naroste,
-   rozdělíme komponenty do vlastních souborů (např. components.css
-   pro split bloky text+obrázek, banners.css pro textové bannery).
+   Rozměry vychází z Figma rámu „Home page - finalni texty":
+   kontejner 1312px, vše uvnitř (nic nepřetéká), border-radius 0,
+   vertikální mezera mezi sekcemi 72px.
+
+   POZN.: zatím pouze DESKTOP (1312px). Responzivitu doplníme, až
+   grafik dodá mobilní návrhy.
    ================================================================= */
 
 /* =================================================================
    RESET SHOPTET OBALŮ NA HOMEPAGE
-   (aby šel vlastní obsah přes celou šířku bez paddingů šablony)
    ================================================================= */
 body.in-index .middle-banners-wrapper,
 body.in-index .middle-banners-wrapper .container {
@@ -22,15 +23,8 @@ body.in-index .middle-banners-wrapper .container {
     max-width: 100% !important;
 }
 
-.welcome > div {
-    margin: 0;
-    width: 100%;
-    max-width: 100%;
-}
-
-.welcome div {
-    max-width: 100%;
-}
+.welcome > div { margin: 0; width: 100%; max-width: 100%; }
+.welcome div { max-width: 100%; }
 
 .homepage-box {
     background-color: var(--bg);
@@ -38,34 +32,291 @@ body.in-index .middle-banners-wrapper .container {
     border-bottom-color: var(--bg);
 }
 
-@media (max-width: 768px) {
-    .homepage-box.welcome-wrapper {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-        padding: 0 !important;
-    }
-}
-
 /* =================================================================
-   OBSAHOVÝ WRAPPER TITULKY
+   KONTEJNER A RYTMUS SEKCÍ
    ================================================================= */
 .hn-wrapper {
     width: 100%;
     color: var(--dark-grey-text);
 }
 
-.hn-wrapper * {
-    box-sizing: border-box;
+.hn-wrapper * { box-sizing: border-box; }
+
+.hn-container {
+    width: 100%;
+    max-width: 1312px;
+    margin: 0 auto;
+}
+
+/* 72px mezera mezi hlavními sekcemi */
+.hn-container > * + * { margin-top: 72px; }
+
+/* obrázky obecně */
+.hn-wrapper img { max-width: 100%; display: block; }
+
+/* =================================================================
+   TLAČÍTKO / ODKAZ SE ŠIPKOU (text + linka + hrot)
+   ================================================================= */
+.hn-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 166px;
+    text-decoration: none;
+}
+
+.hn-btn__label {
+    font-family: 'Fabrikat Medium', sans-serif;
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: lowercase;
+    color: var(--rtenka);
+}
+
+.hn-btn__line {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background: var(--rtenka);
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hn-btn__line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--rtenka);
+    border-right: 1px solid var(--rtenka);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.hn-btn:hover .hn-btn__line { width: 125%; }
+
+/* světlá varianta (na tmavé fotce) */
+.hn-btn--light .hn-btn__label { color: var(--white); }
+.hn-btn--light .hn-btn__line { background: var(--white); }
+.hn-btn--light .hn-btn__line::after {
+    border-top-color: var(--white);
+    border-right-color: var(--white);
 }
 
 /* =================================================================
-   SEKCE TITULNÍ STRÁNKY (doplňováno po fázích)
-   [ ] Hero (fotka + nadpis + wordmark haaro naturo + claim)
-   [ ] „Co vaše vlasy milují" — 4 karty
-   [ ] Banner byliny (celé PNG s textem)
-   [ ] Split komponenty (text + obrázek + odkaz se šipkou)
-   [ ] „Vstupte do světa…" + banner barvy
-   [ ] „Pořádáme" (workshopy a školení)
-   [ ] Kurz / Školení (split komponenty)
-   [ ] Spodní blok „Vybíráme byliny a oleje…"
+   1) HERO
    ================================================================= */
+.hn-hero {
+    position: relative;
+    width: 100%;
+    height: 624px;
+    overflow: hidden;
+}
+
+.hn-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hn-hero__title {
+    position: absolute;
+    left: 46px;
+    top: 49px;
+    max-width: 626px;
+    color: var(--white);
+}
+
+.hn-hero__wordmark {
+    position: absolute;
+    left: 46px;
+    top: 187px;
+    width: 380px;
+    height: auto;
+}
+
+.hn-hero__claim {
+    position: absolute;
+    left: 46px;
+    top: 437px;
+    max-width: 551px;
+    color: var(--white);
+    font-family: 'Fabrikat', sans-serif;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+/* =================================================================
+   2) SEKCE S NADPISEM (Co vaše vlasy milují / Vstupte do světa…)
+   ================================================================= */
+.hn-section__title {
+    margin-bottom: 48px;
+}
+
+/* =================================================================
+   KARTY „Co vaše vlasy milují"
+   ================================================================= */
+.hn-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 304px);
+    gap: 32px;
+}
+
+.hn-card { display: block; text-decoration: none; }
+
+.hn-card__media {
+    position: relative;
+    overflow: hidden;
+}
+
+.hn-card__media img {
+    width: 304px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hn-card__title {
+    position: absolute;
+    top: 24px;
+    left: 29px;
+    right: 24px;
+    color: var(--white);
+}
+
+.hn-card__desc {
+    margin-top: 32px;
+    color: var(--dark-grey-text);
+}
+
+/* různé výšky karet dle Figmy (staggered) */
+.hn-card--hydratace .hn-card__media { height: 424px; }
+.hn-card--objem     .hn-card__media { height: 360px; }
+.hn-card--uhlazeni  .hn-card__media { height: 432px; }
+.hn-card--cistota   .hn-card__media { height: 392px; }
+
+/* =================================================================
+   BANNERY S TEXTEM (text je součástí obrázku)
+   ================================================================= */
+.hn-banner { width: 100%; height: auto; }
+
+/* =================================================================
+   SPLIT SEKCE (text + obrázek + odkaz)
+   text 640 + mezera 144 + obrázek 528 = 1312
+   ================================================================= */
+.hn-splits {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+}
+
+.hn-split {
+    display: flex;
+    gap: 144px;
+    align-items: flex-start;
+}
+
+.hn-split--reversed { flex-direction: row-reverse; }
+
+.hn-split__body { flex: 0 0 640px; max-width: 640px; }
+.hn-split__media { flex: 0 0 528px; }
+
+.hn-split__media img {
+    width: 528px;
+    height: 376px;
+    object-fit: cover;
+}
+
+.hn-split__title {
+    padding-top: 32px;
+    border-top: 1px solid var(--dark-grey-text);
+}
+
+.hn-split__text {
+    margin: 24px 0 32px;
+    color: var(--dark-grey-text);
+}
+
+/* =================================================================
+   FEATURE „Pořádáme" (fotka + překrytý text)
+   ================================================================= */
+.hn-feature {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+    color: var(--white);
+}
+
+.hn-feature__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hn-feature__title {
+    position: absolute;
+    left: 40px;
+    top: 42px;
+}
+
+.hn-feature__panel {
+    position: absolute;
+    left: 674px;
+    top: 142px;
+    width: 542px;
+}
+
+.hn-feature__text {
+    margin-top: 16px;
+    color: var(--white);
+}
+
+/* =================================================================
+   VĚRNOSTNÍ PROGRAM (text – odznak – text)
+   ================================================================= */
+.hn-loyalty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hn-loyalty__badge { width: 150px; height: 150px; }
+
+/* =================================================================
+   SPODNÍ CTA „Vybíráme byliny a oleje…" (fotka + překrytý text)
+   ================================================================= */
+.hn-cta {
+    position: relative;
+    width: 100%;
+    height: 808px;
+    overflow: hidden;
+    color: var(--white);
+}
+
+.hn-cta__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hn-cta__title {
+    position: absolute;
+    left: 53px;
+    top: 458px;
+    max-width: 512px;
+}
+
+.hn-cta__btn {
+    position: absolute;
+    left: 53px;
+    top: 690px;
+}
