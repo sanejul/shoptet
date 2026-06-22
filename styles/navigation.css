@@ -36,10 +36,10 @@
     min-height: 25px !important;
 }
 
-.top-navigation-bar * {
-    font-size: 0.8rem;
-    color: var(--dark) !important;
-}
+    .top-navigation-bar * {
+        font-size: 0.8rem;
+        color: var(--dark-grey-text) !important;
+    }
 
 #top-navigation-bar {
     display: none !important;
@@ -139,8 +139,8 @@ div.search form input.search-input,
     }
 
     #header {
-        border-top: 1px solid var(--dark);
-        border-bottom: 1px solid var(--dark);
+        border-top: 1px solid var(--dark-grey-text);    /* linka mezi horní lištou a menu */
+        border-bottom: 1px solid var(--dark-grey-text); /* linka mezi menu a obsahem */
     }
 
     /* 2. Menu (vlevo) */
@@ -157,12 +157,14 @@ div.search form input.search-input,
     .menu-level-1 {
         display: flex;
         flex-wrap: wrap;
+        gap: 41px;            /* mezera mezi položkami menu dle Figmy */
         padding: 0 !important;
         margin: 0 !important;
     }
 
     .menu-level-1 > li {
         border: none !important;
+        position: relative; /* kotva pro dropdown 2. úrovně */
     }
 
     .menu-level-1 > li > a {
@@ -170,9 +172,14 @@ div.search form input.search-input,
         font-weight: 700;
         font-size: 1rem;
         text-transform: lowercase !important;
-        padding: 10px 15px !important;
-        color: var(--dark) !important;
+        padding: 10px 0 !important;   /* rozteč řeší gap 41px na .menu-level-1 */
+        color: var(--dark-grey-text) !important;
         background: transparent !important;
+    }
+
+    .menu-level-1 > li > a:hover,
+    .menu-level-1 > li > a:hover b {
+        color: var(--rtenka) !important;
     }
 
     .navigation-in ul li a b {
@@ -196,7 +203,7 @@ div.search form input.search-input,
     }
 
     .site-name-wrapper img {
-        max-height: 55px;
+        max-height: 75px;   /* výška loga dle Figmy (75x75) */
         width: auto;
     }
 
@@ -263,17 +270,60 @@ div.search form input.search-input,
         display: none !important;
     }
 
-    /* Dropdown (2. úroveň) */
-    .menu-level-2 {
-        width: 100vw;
-        padding: 6rem 0 4rem 0;
-        background-color: var(--bg) !important;
+    /* Dropdown (2. úroveň) – čistý panel pod položkou (místo rozbitého mega-menu) */
+    #navigation .menu-level-2 {
+        width: auto;
+        min-width: 260px;
+        padding: 12px 0;
+        background-color: var(--white) !important;
+        border: 1px solid var(--dark-grey-text);
+        border-radius: 2px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        left: 0;
     }
 
-    .menu-level-2 li a {
-        color: var(--dark) !important;
-        display: block !important;
+    #navigation .menu-level-2 > li {
+        border: none !important;
+        white-space: nowrap;
+    }
+
+    #navigation .menu-level-2 a {
+        color: var(--dark-grey-text) !important;
+        display: block;
+    }
+
+    #navigation .menu-level-2 .menu-no-image > a {
+        padding: 8px 24px;
+        font-family: 'Fabrikat Medium', sans-serif;
+        font-size: 0.95rem;
+        text-transform: none;
+    }
+
+    #navigation .menu-level-2 .menu-no-image > a:hover {
+        color: var(--rtenka) !important;
+    }
+
+    /* 3. úroveň – jemnější pod-položky (v DOM oddělené čárkami) */
+    #navigation .menu-level-3 {
+        margin: 0;
+        padding: 2px 24px 6px 24px;
+        list-style: none;
+    }
+
+    #navigation .menu-level-3 > li {
+        display: inline;
+    }
+
+    #navigation .menu-level-3 > li > a {
+        display: inline;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.82rem;
+        color: var(--maly-text) !important;
+    }
+
+    #navigation .menu-level-3 > li > a:hover {
+        color: var(--rtenka) !important;
     }
 
     .admin-logged .popup-widget.cart-widget {
