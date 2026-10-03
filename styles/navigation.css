@@ -1,276 +1,287 @@
 /* =================================================================
-   NAVIGATION.CSS — hlavička, navigace a patička Shoptetu
+   NAVIGATION.CSS — hlavička Haaro Naturo dle Figmy
    -----------------------------------------------------------------
-   Přebíjení výchozích stylů Shoptetu pro horní lištu, hlavní menu,
-   logo, ikony (košík/hledání) a patičku.
-   Závisí na base.css (proměnné var(--…)).
+   Dvě řady:
+     (1) horní lišta [103px]: kontakty vlevo · logo uprostřed · ikony vpravo
+         (účet · košík · hledání · CZK)
+     (2) menu [72px]: položky Fabrikat 19px, u rozbalovacích šipka
 
-   POZN.: Toto je zatím přenesený stávající stav (sjednocení vzhledu
-   se starým webem). Kompletní redesign navigace podle Figmy (vč.
-   opravy rozbalování dropdownu podkategorií) přijde ve fázi navigace.
+   Horní řadu skládá nav.js (přesune logo a košík z #header do .top-navigation-bar)
+   a přidá na <html> třídu `hn-nav-ready`. Strukturální přepisy jsou pod touto
+   třídou, aby se bez JS stávající hlavička nerozbila.
+
+   Ikony jsou na Shoptetu v /user/documents/upload/assets/icons/ (barva #484848).
+   Závisí na base.css (tokeny var(--…)).
    ================================================================= */
 
-/* ---- Pozadí a okraje lišt ---- */
-.custom-footer,
-.footer-links-icons,
-.footer-bottom,
-.menu-level-1,
-.navigation-wrapper,
+/* pozadí lišt */
 .top-navigation-bar,
-.top-navigation-contacts,
-.latest-contribution-wrapper,
-.content-wrapper-in,
-#header {
-    background-color: var(--bg) !important;
-}
-
-.custom-footer,
-.footer-bottom,
-.footer-links-icons {
-    border-color: var(--dark) !important;
-}
-
-/* ---- Horní lišta s kontakty ---- */
-.top-navigation-bar {
-    padding: 2rem 0;
-    min-height: 25px !important;
-}
-
-    .top-navigation-bar * {
-        font-size: 0.8rem;
-        color: var(--dark-grey-text) !important;
-    }
-
-#top-navigation-bar {
-    display: none !important;
-}
-
-.top-navigation-contacts a.project-phone:before,
-.top-navigation-contacts a.project-email:before {
-    display: none;
-    content: none;
-}
-
-/* ---- Hlavní menu ---- */
-.navigation-in > ul > li,
-.navigation-in > ul > li > a {
-    color: var(--dark) !important;
-    text-transform: lowercase;
-    border: none;
-}
-
+#header,
+.navigation-wrapper,
 .menu-level-1 {
-    color: var(--dark) !important;
+    background-color: var(--white) !important;
 }
 
-.navigation-in a {
-    text-transform: lowercase !important;
-}
-
-.navigation-buttons a[data-target=cart] {
-    color: var(--dark);
-}
-
-.navigation-buttons a[data-target=cart] i {
-    color: var(--bg) !important;
-    background-color: var(--dark) !important;
-    border: 1px solid var(--dark) !important;
-}
-
-/* ---- Hledání ---- */
-div.search form input.search-input,
-.search .btn-default {
+/* skryj text "Zákaznická podpora:" (nahrazeno ikonami) */
+.top-navigation-contacts strong {
     display: none !important;
-}
-
-/* ---- Drobečková navigace ---- */
-.breadcrumbs span {
-    text-transform: lowercase !important;
-}
-
-.breadcrumbs {
-    border-bottom-style: none;
-}
-
-.breadcrumbs-wrapper {
-    border-bottom: 1px solid var(--gray);
-}
-
-/* ---- Patička ---- */
-.footer-bottom a img {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-.footer-bottom .title {
-    opacity: 0.3 !important;
-}
-
-/* ---- Hamburger (mobil) ---- */
-.responsive-tools > a[data-target=navigation]:before {
-    color: var(--dark) !important;
-    background-color: transparent !important;
-    font-size: 1.3rem;
-}
-
-@media (max-width: 767px) {
-    #header .cart-count {
-        top: -35px !important;
-    }
 }
 
 /* =================================================================
-   DESKTOP LAYOUT HLAVIČKY (menu vlevo – logo uprostřed – ikony vpravo)
+   DESKTOP
    ================================================================= */
 @media (min-width: 992px) {
 
+    /* ---------- HORNÍ ŘADA (103 px) ---------- */
     .top-navigation-bar {
-        border-bottom: none;
+        border: none !important;
+        border-bottom: 1px solid var(--dark-grey-text) !important; /* linka mezi horní lištou a menu */
+        padding: 0 !important;
+        min-height: 0 !important;
     }
 
-    /* 1. Hlavní kontejner hlavičky */
-    #header .navigation-wrapper {
-        display: flex !important;
+    .hn-nav-ready .top-navigation-bar .container {
+        position: relative;
+        display: flex;
         align-items: center;
         justify-content: space-between;
-        position: relative;
-        height: 70px;
-        padding: 0 15px;
+        height: 103px;
     }
 
-    #header {
-        border-top: 1px solid var(--dark-grey-text);    /* linka mezi horní lištou a menu */
-        border-bottom: 1px solid var(--dark-grey-text); /* linka mezi menu a obsahem */
-    }
-
-    /* 2. Menu (vlevo) */
-    #navigation {
-        order: 1;
-        flex: 1;
+    /* kontakty vlevo */
+    .top-navigation-contacts {
         display: flex;
-        justify-content: flex-start;
-        background: transparent !important;
+        align-items: center;
+        gap: 30px;
+        margin: 0;
+    }
+
+    .top-navigation-contacts a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Fabrikat', sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+        color: var(--dark-grey-text) !important;
+        border: none !important;
+        text-decoration: none;
+    }
+
+    .top-navigation-contacts a::before {
+        content: '';
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .top-navigation-contacts a.project-phone::before {
+        width: 21px;
+        height: 21px;
+        background-image: url('/user/documents/upload/assets/icons/phone.svg');
+    }
+
+    .top-navigation-contacts a.project-email::before {
+        width: 24px;
+        height: 18px;
+        background-image: url('/user/documents/upload/assets/icons/mail.svg');
+    }
+
+    /* logo uprostřed (opravuje dřívější posun mimo stránku) */
+    .hn-nav-ready .top-navigation-bar .site-name-wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         margin: 0 !important;
+        width: auto !important;
+        z-index: 2;
+    }
+
+    .top-navigation-bar .site-name-wrapper img {
+        max-height: 75px !important;
+        width: auto;
+    }
+
+    /* ---------- PRAVÉ IKONY ---------- */
+    .top-navigation-tools {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        margin: 0;
+    }
+
+    .top-navigation-tools .responsive-tools {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        margin: 0;
+    }
+
+    /* pořadí: účet · košík · hledání · CZK */
+    .top-navigation-tools .top-nav-button-login { order: 1; }
+    .top-navigation-tools .navigation-buttons { order: 2; }
+    .top-navigation-tools .responsive-tools { order: 3; }
+    .top-navigation-tools .dropdown { order: 4; }
+
+    /* skryj hamburger na desktopu + duplicitní login v responsive-tools */
+    .top-navigation-tools .responsive-tools a[data-target="navigation"],
+    .top-navigation-tools .responsive-tools a[data-target="login"] {
+        display: none !important;
+    }
+
+    /* účet (login) jako ikona */
+    .top-nav-button-login {
+        width: 20px;
+        height: 21px;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        position: relative;
+        font-size: 0 !important;
+    }
+    .top-nav-button-login span { display: none !important; }
+    .top-nav-button-login::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('/user/documents/upload/assets/icons/login.svg') center/contain no-repeat;
+    }
+
+    /* hledání jako ikona (toggle) */
+    .top-navigation-tools .responsive-tools a[data-target="search"] {
+        display: inline-block;
+        width: 21px;
+        height: 21px;
+        position: relative;
+        font-size: 0 !important;
+        background: transparent !important;
         border: none !important;
     }
+    .top-navigation-tools .responsive-tools a[data-target="search"]::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('/user/documents/upload/assets/icons/search.svg') center/contain no-repeat;
+    }
+
+    /* košík (přesunutý nav.js) jako ikona */
+    .top-navigation-tools .navigation-buttons {
+        float: none !important;
+        margin: 0 !important;
+        display: inline-flex;
+        align-items: center;
+    }
+    .top-navigation-tools .navigation-buttons a.btn {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        display: inline-flex;
+        align-items: center;
+    }
+    .top-navigation-tools .navigation-buttons .cart-price { display: none !important; }
+    .top-navigation-tools .navigation-buttons a[data-target="cart"] {
+        width: 25px;
+        height: 21px;
+        position: relative;
+        font-size: 0 !important;
+    }
+    .top-navigation-tools .navigation-buttons a[data-target="cart"] i { display: none !important; }
+    .top-navigation-tools .navigation-buttons a[data-target="cart"]::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('/user/documents/upload/assets/icons/basket.svg') center/contain no-repeat;
+    }
+
+    /* měna CZK (Inter Medium 18, barva maly-text, šipka arrow.svg) */
+    .top-navigation-tools .dropdown {
+        display: inline-flex;
+        align-items: center;
+    }
+    .top-navigation-tools .dropdown > span { display: none; } /* "Ceny v:" */
+    .top-navigation-tools .dropdown button {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: -0.05em;
+        color: var(--maly-text) !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .top-navigation-tools .dropdown button .caret {
+        width: 10px;
+        height: 7px;
+        border: none;
+        background: url('/user/documents/upload/assets/icons/arrow.svg') center/contain no-repeat;
+    }
+
+    /* ---------- MENU ŘADA (72 px) ---------- */
+    #header { border: none !important; }
+    .hn-nav-ready #header .navigation-wrapper {
+        display: block !important;
+        height: auto !important;
+        padding: 0 !important;
+    }
+    .hn-nav-ready #header .header-top { display: none !important; }
+
+    #navigation {
+        margin: 0 !important;
+        background: transparent !important;
+        border: none !important;
+    }
+    .navigation-in { margin: 0 !important; }
 
     .menu-level-1 {
         display: flex;
-        flex-wrap: wrap;
-        gap: 41px;            /* mezera mezi položkami menu dle Figmy */
+        align-items: center;
+        gap: 41px;
+        height: 72px;
         padding: 0 !important;
         margin: 0 !important;
+        list-style: none;
+        border-bottom: 1px solid var(--dark-grey-text); /* linka mezi menu a obsahem */
     }
 
     .menu-level-1 > li {
         border: none !important;
-        position: relative; /* kotva pro dropdown 2. úrovně */
+        position: relative;
     }
 
     .menu-level-1 > li > a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         font-family: 'Fabrikat', sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        text-transform: lowercase !important;
-        padding: 10px 0 !important;   /* rozteč řeší gap 41px na .menu-level-1 */
+        font-size: 19px;
+        line-height: 1.5;
+        font-weight: 400;
+        text-transform: none !important;
         color: var(--dark-grey-text) !important;
         background: transparent !important;
+        padding: 0 !important;
     }
+
+    .menu-level-1 > li > a b { font-weight: 400; }
 
     .menu-level-1 > li > a:hover,
-    .menu-level-1 > li > a:hover b {
-        color: var(--rtenka) !important;
+    .menu-level-1 > li > a:hover b { color: var(--rtenka) !important; }
+
+    /* šipka u rozbalovacích položek */
+    .menu-level-1 .submenu-arrow {
+        display: inline-block;
+        width: 10px;
+        height: 7px;
+        background: url('/user/documents/upload/assets/icons/arrow.svg') center/contain no-repeat;
     }
 
-    .navigation-in ul li a b {
-        font-weight: 700;
-    }
-
-    .menu-level-1 > li:first-child > a {
-        padding-left: 0 !important;
-    }
-
-    /* 3. Logo (uprostřed, absolutně) */
-    .site-name-wrapper {
-        position: absolute;
-        left: 50%;
-        top: -75%;
-        transform: translate(-50%, -50%);
-        z-index: 100;
-        margin: 0 !important;
-        width: auto !important;
-        text-align: center;
-    }
-
-    .site-name-wrapper img {
-        max-height: 75px;   /* výška loga dle Figmy (75x75) */
-        width: auto;
-    }
-
-    .dropdown-menu > li > a {
-        padding: 10px 20px;
-    }
-
-    /* 4. Ikony (vpravo) */
-    .header-top {
-        order: 3;
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        background: transparent !important;
-        padding: 0 !important;
-    }
-
-    /* 5. Vyhledávání (skryté tlačítko) */
-    div.search {
-        display: none !important;
-    }
-
-    div.search form button.search-button {
-        display: none !important;
-        position: relative !important;
-        right: auto !important;
-        top: auto !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-        width: 30px;
-        height: 30px;
-        color: var(--dark) !important;
-        font-size: 1.2rem;
-        cursor: pointer;
-    }
-
-    div.search form button.search-button i {
-        display: none !important;
-        color: var(--dark) !important;
-    }
-
-    /* 6. Košík */
-    .navigation-buttons {
-        float: none !important;
-        display: flex;
-        align-items: center;
-        margin: 0 !important;
-    }
-
-    .navigation-buttons a.btn {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        color: var(--dark) !important;
-        padding: 0 !important;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .navigation-buttons .cart-price {
-        display: none !important;
-    }
-
-    /* Dropdown (2. úroveň) – čistý panel pod položkou (místo rozbitého mega-menu) */
+    /* ---------- DROPDOWN PANEL (2. a 3. úroveň) ---------- */
     #navigation .menu-level-2 {
         width: auto;
         min-width: 260px;
@@ -299,20 +310,15 @@ div.search form input.search-input,
         text-transform: none;
     }
 
-    #navigation .menu-level-2 .menu-no-image > a:hover {
-        color: var(--rtenka) !important;
-    }
+    #navigation .menu-level-2 .menu-no-image > a:hover { color: var(--rtenka) !important; }
 
-    /* 3. úroveň – jemnější pod-položky (v DOM oddělené čárkami) */
     #navigation .menu-level-3 {
         margin: 0;
         padding: 2px 24px 6px 24px;
         list-style: none;
     }
 
-    #navigation .menu-level-3 > li {
-        display: inline;
-    }
+    #navigation .menu-level-3 > li { display: inline; }
 
     #navigation .menu-level-3 > li > a {
         display: inline;
@@ -322,11 +328,33 @@ div.search form input.search-input,
         color: var(--maly-text) !important;
     }
 
-    #navigation .menu-level-3 > li > a:hover {
-        color: var(--rtenka) !important;
-    }
-
-    .admin-logged .popup-widget.cart-widget {
-        top: 18%;
-    }
+    #navigation .menu-level-3 > li > a:hover { color: var(--rtenka) !important; }
 }
+
+/* =================================================================
+   MOBIL (zatím ponecháno blízko Shoptet defaultu — řeší se později)
+   ================================================================= */
+.responsive-tools > a[data-target="navigation"]:before {
+    color: var(--dark-grey-text) !important;
+    background-color: transparent !important;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 767px) {
+    #header .cart-count { top: -35px !important; }
+}
+
+/* patička */
+.custom-footer,
+.footer-links-icons,
+.footer-bottom {
+    background-color: var(--white) !important;
+    border-color: var(--dark-grey-text) !important;
+}
+.footer-bottom a img { display: none !important; visibility: hidden !important; }
+.footer-bottom .title { opacity: 0.3 !important; }
+
+/* drobečková navigace */
+.breadcrumbs span { text-transform: lowercase !important; }
+.breadcrumbs { border-bottom-style: none; }
+.breadcrumbs-wrapper { border-bottom: 1px solid var(--gray); }
