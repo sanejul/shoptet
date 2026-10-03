@@ -35,17 +35,23 @@
     /* ---------- HORNÍ ŘADA (103 px) ---------- */
     .top-navigation-bar {
         border: none !important;
-        border-bottom: 1px solid var(--dark-grey-text) !important; /* linka mezi horní lištou a menu */
         padding: 0 !important;
         min-height: 0 !important;
     }
 
+    /* vnitřek horní lišty = 1312 vycentrováno; linka je na něm, takže lícuje
+       s obsahem stránky (také 1312) */
     .hn-nav-ready .top-navigation-bar .container {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 103px;
+        width: 100% !important;
+        max-width: 1312px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        border-bottom: 1px solid var(--dark-grey-text);
     }
 
     /* kontakty vlevo */
@@ -238,11 +244,17 @@
         height: auto !important;
         min-height: 0 !important;
     }
+    /* menu řádek = 1312 vycentrováno; linka (mezi menu a obsahem) je na něm,
+       takže lícuje s obsahem stránky */
     .hn-nav-ready #header .navigation-wrapper {
         display: block !important;
         height: auto !important;
         min-height: 0 !important;
+        width: 100% !important;
+        max-width: 1312px !important;
+        margin: 0 auto !important;
         padding: 0 !important;
+        border-bottom: 1px solid var(--dark-grey-text);
     }
     .hn-nav-ready #header .header-top { display: none !important; }
 
@@ -269,7 +281,6 @@
         padding: 0 !important;
         margin: 0 !important;
         list-style: none;
-        border-bottom: 1px solid var(--dark-grey-text); /* linka mezi menu a obsahem */
     }
 
     .menu-level-1 > li {
