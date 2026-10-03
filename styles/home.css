@@ -23,8 +23,16 @@ body.in-index .middle-banners-wrapper .container {
     max-width: 100% !important;
 }
 
-.welcome > div { margin: 0; width: 100%; max-width: 100%; }
-.welcome div { max-width: 100%; }
+/* Shoptet dává přímému obalu textového banneru (.welcome > div) max-width:800px.
+   Uvolníme na plnou šířku — ale JEN přímého potomka (`>`), ne všechny
+   potomky, jinak bychom přebili max-width 1312 na .hn-container. */
+body.in-index .welcome,
+body.in-index .welcome > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+}
 
 .homepage-box {
     background-color: var(--bg);
@@ -40,12 +48,22 @@ body.in-index .middle-banners-wrapper .container {
     color: var(--dark-grey-text);
 }
 
+/* Shoptet má ve .welcome pravidlo typu `.welcome div { max-width: 800px }`,
+   které kaskádovitě zužuje VŠECHNY naše vnořené divy. Zrušíme ten strop pro
+   celý náš strom; konkrétní šířky pak řeší flex/grid a kontejner (níže,
+   s vyšší specificitou). */
+.hn-wrapper,
+.hn-wrapper div {
+    max-width: none !important;
+}
+
 .hn-wrapper * { box-sizing: border-box; }
 
-.hn-container {
+/* Obsah titulky = kontejner max 1312 px, vycentrovaný. */
+.hn-wrapper .hn-container {
     width: 100%;
-    max-width: 1312px;
-    margin: 0 auto;
+    max-width: 1312px !important;
+    margin: 0 auto !important;
 }
 
 /* 72px mezera mezi hlavními sekcemi */
