@@ -68,24 +68,28 @@
         text-decoration: none;
     }
 
+    /* content:'' !important přebije Shoptet font-glyph (.project-phone:before
+       má content:"\e92d" font-family:shoptet) — jinak se ikona zdvojí */
     .top-navigation-contacts a::before {
-        content: '';
+        content: '' !important;
         display: inline-block;
+        font-size: 0 !important;
+        line-height: 0 !important;
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
     }
 
     .top-navigation-contacts a.project-phone::before {
-        width: 21px;
-        height: 21px;
-        background-image: url('/user/documents/upload/assets/icons/phone.svg');
+        width: 21px !important;
+        height: 21px !important;
+        background-image: url('/user/documents/upload/assets/icons/phone.svg') !important;
     }
 
     .top-navigation-contacts a.project-email::before {
-        width: 24px;
-        height: 18px;
-        background-image: url('/user/documents/upload/assets/icons/mail.svg');
+        width: 24px !important;
+        height: 18px !important;
+        background-image: url('/user/documents/upload/assets/icons/mail.svg') !important;
     }
 
     /* logo uprostřed (opravuje dřívější posun mimo stránku) */
@@ -112,17 +116,15 @@
         margin: 0;
     }
 
-    .top-navigation-tools .responsive-tools {
-        display: flex;
-        align-items: center;
-        gap: 35px;
-        margin: 0;
-    }
+    /* .responsive-tools rozpustíme (display:contents), ať je ikona hledání
+       přímým flex potomkem .top-navigation-tools a mezery jsou jednotné (35px).
+       Jinak wrapper .responsive-tools zabíral ~116px a mezery byly nerovné. */
+    .top-navigation-tools .responsive-tools { display: contents; }
 
     /* pořadí: účet · košík · hledání · CZK */
     .top-navigation-tools .top-nav-button-login { order: 1; }
     .top-navigation-tools .navigation-buttons { order: 2; }
-    .top-navigation-tools .responsive-tools { order: 3; }
+    .top-navigation-tools .responsive-tools a[data-target="search"] { order: 3; }
     .top-navigation-tools .dropdown { order: 4; }
 
     /* skryj hamburger na desktopu + duplicitní login v responsive-tools */
@@ -154,6 +156,7 @@
         display: inline-block;
         width: 21px;
         height: 21px;
+        margin: 0 !important;   /* Shoptet dává .responsive-tools>a margin-right:95px */
         position: relative;
         font-size: 0 !important;
         background: transparent !important;
@@ -200,6 +203,7 @@
     .top-navigation-tools .dropdown {
         display: inline-flex;
         align-items: center;
+        margin: 0 !important;
     }
     .top-navigation-tools .dropdown > span { display: none; } /* "Ceny v:" */
     .top-navigation-tools .dropdown button {
@@ -218,15 +222,26 @@
     .top-navigation-tools .dropdown button .caret {
         width: 10px;
         height: 7px;
-        border: none;
+        border: none !important;
         background: url('/user/documents/upload/assets/icons/arrow.svg') center/contain no-repeat;
+    }
+    /* skryj Shoptet font-glyph šipku (.caret:before) — jinak dvojitá šipka u CZK */
+    .top-navigation-tools .dropdown button .caret::before {
+        content: none !important;
+        display: none !important;
     }
 
     /* ---------- MENU ŘADA (72 px) ---------- */
     #header { border: none !important; }
+    /* #header musí obalit menu (jinak končí dřív a obsah překryje spodní linku) */
+    .hn-nav-ready #header {
+        height: auto !important;
+        min-height: 0 !important;
+    }
     .hn-nav-ready #header .navigation-wrapper {
         display: block !important;
         height: auto !important;
+        min-height: 0 !important;
         padding: 0 !important;
     }
     .hn-nav-ready #header .header-top { display: none !important; }
@@ -235,8 +250,16 @@
         margin: 0 !important;
         background: transparent !important;
         border: none !important;
+        overflow: visible !important;
+        height: auto !important;
     }
-    .navigation-in { margin: 0 !important; }
+    /* Shoptet má .navigation-in position:absolute → #header ji "nevidí" a obsah
+       pod hlavičkou překrývá menu. Vrátíme ji do běžného toku. */
+    .hn-nav-ready #navigation .navigation-in {
+        position: static !important;
+        height: auto !important;
+        margin: 0 !important;
+    }
 
     .menu-level-1 {
         display: flex;
@@ -279,6 +302,11 @@
         width: 10px;
         height: 7px;
         background: url('/user/documents/upload/assets/icons/arrow.svg') center/contain no-repeat;
+    }
+    /* skryj Shoptet font-glyph (.submenu-arrow:after) — jinak dvojitá šipka */
+    .menu-level-1 .submenu-arrow::after {
+        content: none !important;
+        display: none !important;
     }
 
     /* ---------- DROPDOWN PANEL (2. a 3. úroveň) ---------- */
