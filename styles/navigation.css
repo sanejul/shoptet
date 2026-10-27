@@ -288,14 +288,14 @@
     .menu-level-1 > li {
         border: none !important;
         position: relative;
-        display: flex;
-        align-items: center;
+        display: flex !important;        /* !important – Shoptet má .navigation-in ul li{display:block} s vyšší specificitou */
+        align-items: center !important;
         height: 72px !important;
     }
 
     .menu-level-1 > li > a {
-        display: inline-flex;
-        align-items: center;
+        display: inline-flex !important; /* !important – Shoptet .navigation-in ul li a{display:block} jinak vyhraje a text je nahoře */
+        align-items: center !important;  /* svislé vycentrování textu v 72px řádku */
         gap: 8px;
         height: 100%;          /* celá výška 72px řádku je aktivní plocha */
         font-family: 'Fabrikat', sans-serif;
