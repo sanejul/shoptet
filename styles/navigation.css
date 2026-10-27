@@ -332,68 +332,108 @@
         display: none !important;
     }
 
-    /* ---------- DROPDOWN PANEL (2. a 3. úroveň) ---------- */
-    /* top:100% = přímo pod řádkem menu (li je teď přes celou výšku 72px),
-       takže mezi menu a panelem není mezera a při přejetí myší nezmizí.
-       width:auto přebíjí Shoptet mega-menu width:100%. */
+    /* ---------- DROPDOWN ----------
+       DŮLEŽITÉ: na .menu-level-2 NEnastavujeme display ani šířku — Shoptet
+       přepíná zobrazení dropdownu přes třídu .exp (hover). Kdybychom dali
+       display:block, dropdown by byl trvale otevřený (což byl předchozí bug).
+       1. úroveň dropdownu (menu-level-2 > li) tedy necháváme na Shoptetu;
+       řešíme jen vzhled a zanořenou 2. úroveň (menu-level-3) do sloupce. */
     #navigation .menu-level-2 {
-        display: block !important;   /* Shoptet má .navigation-in ul{display:flex;flex-wrap:wrap} → mega-menu; my chceme jednosloupcový panel */
-        width: auto !important;
-        min-width: 320px !important;
-        max-width: 460px !important;
-        top: 100% !important;
-        left: 0 !important;
-        padding: 12px 0 !important;
         background-color: var(--white) !important;
-        border: 1px solid var(--dark-grey-text) !important;
-        border-radius: 2px;
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
-    #navigation .menu-level-2 > li {
+    /* Layout aplikujeme JEN na otevřený stav (li.exp), aby zůstalo zachováno
+       Shoptet přepínání (zavřený stav = display:none). Panel je vícesloupcový
+       (ne jeden dlouhý sloupec) a naroste na celý obsah (nic nepřetéká). */
+    #navigation .menu-level-1 > li.exp > ul.menu-level-2 {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        flex-direction: row !important;
+        align-content: flex-start !important;
+        align-items: flex-start !important;
+        column-gap: 48px !important;
+        row-gap: 18px !important;
+        width: auto !important;
+        max-width: 860px !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 20px 28px !important;
+    }
+
+    /* vynutíme auto výšku a viditelnost v celém otevřeném dropdownu
+       (Shoptet má na vnořených prvcích reziduální výšky/overflow) */
+    #navigation .menu-level-1 > li.exp > ul.menu-level-2 * {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        float: none !important;
+        position: static !important;
+    }
+
+    /* 1. úroveň dropdownu = sloupce pevné šířky (mřížka, ne jeden dlouhý sloupec).
+       li jako flex-column → spolehlivě obalí nadpis i pod-položky. */
+    #navigation ul.menu-level-2 > li {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;   /* vše zarovnat doleva (ne na střed) */
+        flex: 0 0 220px !important;
+        width: 220px !important;
+        float: none !important;
+        margin: 0 !important;
         border: none !important;
+    }
+    /* Shoptet dává .menu-no-image display:flex a nedrží výšku → blok s auto výškou,
+       aby kategorie obalila i své pod-položky (jinak se řádky překrývaly) */
+    #navigation ul.menu-level-2 > li > .menu-no-image {
         display: block !important;
-        width: 100% !important;
-        white-space: normal;
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
     }
+    #navigation ul.menu-level-2 > li > .menu-no-image > a { width: auto !important; }
 
-    /* Shoptet dává .menu-no-image width:calc(100% - 116px) (místo pro obrázek) */
-    #navigation .menu-level-2 .menu-no-image {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    #navigation .menu-level-2 a {
-        color: var(--dark-grey-text) !important;
-        display: block;
-    }
+    #navigation .menu-level-2 a { color: var(--dark-grey-text) !important; }
 
     #navigation .menu-level-2 .menu-no-image > a {
-        padding: 8px 24px;
+        display: block !important;
         font-family: 'Fabrikat Medium', sans-serif;
-        font-size: 0.95rem;
+        font-size: 15px !important;
+        line-height: 1.5 !important;   /* Shoptet dává menu line-height:0 → texty se překrývaly */
         text-transform: none;
+        padding: 0 0 4px 0 !important;
     }
 
-    #navigation .menu-level-2 .menu-no-image > a:hover { color: var(--rtenka) !important; }
+    #navigation .menu-level-2 a:hover { color: var(--rtenka) !important; }
 
-    #navigation .menu-level-3 {
-        margin: 0;
-        padding: 2px 24px 6px 24px;
-        list-style: none;
+    /* zanořená 2. úroveň (menu-level-3) → svislý sloupec, všechny viditelné */
+    #navigation .has-third-level ul.menu-level-3,
+    #navigation ul.menu-level-3 {
+        display: block !important;
+        margin: 4px 0 0 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
     }
 
-    #navigation .menu-level-3 > li { display: inline; }
+    #navigation ul.menu-level-3 > li {
+        display: block !important;
+        width: auto !important;
+        border: none !important;
+        font-size: 0 !important;   /* skryje čárky (textové uzly) mezi odkazy */
+    }
 
-    #navigation .menu-level-3 > li > a {
-        display: inline;
-        padding: 0;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.82rem;
+    #navigation ul.menu-level-3 > li > a {
+        display: block !important;
+        padding: 3px 0 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 14px !important;
+        line-height: 1.5 !important;   /* jinak zděděné line-height:0 → překryv */
         color: var(--maly-text) !important;
     }
 
-    #navigation .menu-level-3 > li > a:hover { color: var(--rtenka) !important; }
+    #navigation ul.menu-level-3 > li > a:hover { color: var(--rtenka) !important; }
 }
 
 /* =================================================================
