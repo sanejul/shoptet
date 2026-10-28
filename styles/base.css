@@ -38,67 +38,76 @@ body {
     color: var(--dark-grey-text);
     background-color: var(--bg);
     font-family: 'Inter', sans-serif;  /* běžný text = Inter (dle Figmy) */
-    overflow-x: hidden;                /* full-bleed bannery nesmí roztáhnout stránku do boku */
+    overflow-x: hidden !important;     /* probití titulky na plnou šířku nesmí vyvolat vodorovný posuvník */
 }
 
 /* =================================================================
    TYPOGRAFIE — názvy stylů přesně dle Figmy
    ================================================================= */
 
+/* POZN.: !important je tu záměrně — Shoptet šablona přebíjí velikosti/řezy
+   nadpisů vlastními pravidly (často s !important). Aby typografie seděla
+   přesně dle Figmy, musíme je přebít zpět. */
+
 /* H1 — Fabrikat Bold 56 / 56 / -1 % */
 .typo-h1 {
-    font-family: 'Fabrikat Bold', sans-serif;
-    font-size: 56px;
-    line-height: 56px;
-    letter-spacing: -0.01em;
+    font-family: 'Fabrikat Bold', sans-serif !important;
+    font-size: 56px !important;
+    line-height: 56px !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 400 !important;
 }
 
 /* H2 dark — Fabrikat Regular 46 / 44 / -1 % */
 .typo-h2-dark {
-    font-family: 'Fabrikat', sans-serif;
-    font-size: 46px;
-    line-height: 44px;
-    letter-spacing: -0.01em;
-    color: var(--dark-grey-text);
+    font-family: 'Fabrikat', sans-serif !important;
+    font-size: 46px !important;
+    line-height: 44px !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 400 !important;
+    color: var(--dark-grey-text) !important;
 }
 
 /* H2 white — Fabrikat Black 46 / 56 / -1 % (text na fotce) */
 .typo-h2-white {
-    font-family: 'Fabrikat Black', sans-serif;
-    font-size: 46px;
-    line-height: 56px;
-    letter-spacing: -0.01em;
-    color: var(--white);
+    font-family: 'Fabrikat Black', sans-serif !important;
+    font-size: 46px !important;
+    line-height: 56px !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 400 !important;
+    color: var(--white) !important;
 }
 
 /* H3 dark grey — Fabrikat Medium 36 / 1.25 / -1 % */
 .typo-h3-dark-grey {
-    font-family: 'Fabrikat Medium', sans-serif;
-    font-size: 36px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    color: var(--dark-grey-text);
+    font-family: 'Fabrikat Medium', sans-serif !important;
+    font-size: 36px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 400 !important;
+    color: var(--dark-grey-text) !important;
 }
 
 /* H3 hořčice — Fabrikat Bold 36 / 1.25 / -1 %
    Barva je kontextová (v návrhu bílá na fotce) — ve Figmě pro
    „hořčici" samostatná barevná proměnná není, proto ji tu nenastavuji. */
 .typo-h3-horcice {
-    font-family: 'Fabrikat Bold', sans-serif;
-    font-size: 36px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+    font-family: 'Fabrikat Bold', sans-serif !important;
+    font-size: 36px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 400 !important;
 }
 
 /* P — Inter Regular 17 / 1.6 */
 .typo-p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 1.6;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 17px !important;
+    line-height: 1.6 !important;
 }
 .typo-p strong,
-.typo-p b { font-weight: 700; }
+.typo-p b { font-weight: 700 !important; }
 
 /* =================================================================
    BAREVNÉ UTILITY (když potřebuju barvu nezávisle na typu písma)

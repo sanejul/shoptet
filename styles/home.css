@@ -23,8 +23,16 @@ body.in-index .middle-banners-wrapper .container {
     max-width: 100% !important;
 }
 
-.welcome > div { margin: 0; width: 100%; max-width: 100%; }
-.welcome div { max-width: 100%; }
+/* Shoptet dává přímému obalu textového banneru (.welcome > div) max-width:800px.
+   Uvolníme na plnou šířku — ale JEN přímého potomka (`>`), ne všechny
+   potomky, jinak bychom přebili max-width 1312 na .hn-container. */
+body.in-index .welcome,
+body.in-index .welcome > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+}
 
 .homepage-box {
     background-color: var(--bg);
@@ -40,12 +48,22 @@ body.in-index .middle-banners-wrapper .container {
     color: var(--dark-grey-text);
 }
 
+/* Shoptet má ve .welcome pravidlo typu `.welcome div { max-width: 800px }`,
+   které kaskádovitě zužuje VŠECHNY naše vnořené divy. Zrušíme ten strop pro
+   celý náš strom; konkrétní šířky pak řeší flex/grid a kontejner (níže,
+   s vyšší specificitou). */
+.hn-wrapper,
+.hn-wrapper div {
+    max-width: none !important;
+}
+
 .hn-wrapper * { box-sizing: border-box; }
 
-.hn-container {
+/* Obsah titulky = kontejner max 1312 px, vycentrovaný. */
+.hn-wrapper .hn-container {
     width: 100%;
-    max-width: 1312px;
-    margin: 0 auto;
+    max-width: 1312px !important;
+    margin: 0 auto !important;
 }
 
 /* 72px mezera mezi hlavními sekcemi */
@@ -127,6 +145,8 @@ body.in-index .middle-banners-wrapper .container {
     left: 46px;
     top: 49px;
     max-width: 626px;
+    margin: 0 !important; /* Shoptet h1 má ~0.67em margin → jinak nadpis přejede wordmark */
+    padding: 0 !important;
     color: var(--white);
 }
 
@@ -143,11 +163,18 @@ body.in-index .middle-banners-wrapper .container {
     left: 46px;
     top: 437px;
     max-width: 551px;
+    margin: 0 !important;
+    padding: 0 !important;
     color: var(--white);
-    font-family: 'Fabrikat', sans-serif;
-    font-size: 36px;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+    font-family: 'Fabrikat', sans-serif !important;
+    font-size: 36px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+}
+
+.homepage-box.welcome-wrapper {
+    margin-top: 0 !important;
+    padding: 0 19px 38px 19px !important;
 }
 
 /* =================================================================
@@ -166,11 +193,18 @@ body.in-index .middle-banners-wrapper .container {
     gap: 32px;
 }
 
-.hn-card { display: block; text-decoration: none; }
+.hn-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    text-decoration: none;
+}
 
 .hn-card__media {
     position: relative;
     overflow: hidden;
+    width: 304px;
 }
 
 .hn-card__media img {
@@ -188,15 +222,51 @@ body.in-index .middle-banners-wrapper .container {
 }
 
 .hn-card__desc {
-    margin-top: 32px;
+    margin: 0;
     color: var(--dark-grey-text);
 }
 
-/* různé výšky karet dle Figmy (staggered) */
-.hn-card--hydratace .hn-card__media { height: 424px; }
-.hn-card--objem     .hn-card__media { height: 360px; }
-.hn-card--uhlazeni  .hn-card__media { height: 432px; }
-.hn-card--cistota   .hn-card__media { height: 392px; }
+/* různé výšky karet dle Figmy (staggered)
+   Preferuj třídy z banner.html; nth-child je fallback, když Shoptet
+   textový banner ořízne obal .hn-card (živý HTML to už jednou udělal). */
+.hn-card--hydratace .hn-card__media,
+.hn-cards > .hn-card:nth-child(1) .hn-card__media,
+.hn-cards > .hn-card__media:nth-child(1) { height: 424px; }
+
+.hn-card--objem .hn-card__media,
+.hn-cards > .hn-card:nth-child(2) .hn-card__media,
+.hn-cards > .hn-card__media:nth-child(3) { height: 360px; }
+
+.hn-card--uhlazeni .hn-card__media,
+.hn-cards > .hn-card:nth-child(3) .hn-card__media,
+.hn-cards > .hn-card__media:nth-child(5) { height: 432px; }
+
+.hn-card--cistota .hn-card__media,
+.hn-cards > .hn-card:nth-child(4) .hn-card__media,
+.hn-cards > .hn-card__media:nth-child(7) { height: 392px; }
+
+/* šipka pod kartou (Figma: 166px linka rtěnka, bez popisku) */
+.hn-card__arrow {
+    display: block;
+    width: 166px;
+    height: 1px;
+    background: var(--rtenka);
+    position: relative;
+}
+.hn-card__arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--rtenka);
+    border-right: 1px solid var(--rtenka);
+    transform: translateY(-50%) rotate(45deg);
+}
+/* když Shoptet ořízne obal karty, desc/šipka jsou sourozenci media */
+.hn-cards > .hn-card__desc { margin-top: 32px; }
+.hn-cards > .hn-card__arrow { margin-top: 32px; }
 
 /* =================================================================
    BANNERY S TEXTEM (text je součástí obrázku)
