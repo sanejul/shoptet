@@ -254,7 +254,6 @@
         max-width: 1312px !important;
         margin: 0 auto !important;
         padding: 0 !important;
-        border-bottom: 1px solid var(--dark-grey-text);
     }
     .hn-nav-ready #header .header-top { display: none !important; }
 
@@ -312,6 +311,17 @@
 
     .menu-level-1 > li > a:hover,
     .menu-level-1 > li > a:hover b { color: var(--rtenka) !important; }
+
+    /* Figma header nemá „Konzultace" (appended category) */
+    .menu-level-1 > li.menu-item-1099,
+    .menu-level-1 > li.appended-category {
+        display: none !important;
+    }
+
+    /* Figma: šipka jen u Vlasová kosmetika + Kurzy (ne u Blogu) */
+    .menu-level-1 > li.menu-item-854 > a .submenu-arrow {
+        display: none !important;
+    }
 
     /* šipka u rozbalovacích položek (arrow.svg z Figmy).
        Je to flex položka v inline-flex odkazu → flex:0 0 auto, aby se
