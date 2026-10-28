@@ -10,8 +10,10 @@ Vlastní design (theme) pro e-shop **Haaro Naturo** na platformě **Shoptet** (�
 
 ### Jak nasazení funguje (důležité)
 - CSS/JS a obrázky se nahrávají do správce souborů Shoptetu a referencují se absolutní URL `https://759082.myshoptet.com/user/documents/upload/...`.
-- Změny v tomto repu se **needeployují automaticky** — soubory se ručně nahrají v administraci. Repo je zdroj pravdy pro kód, ne pro běžící web.
+- Změny v tomto repu se **needeployují automaticky** — **Julie** je ručně nahraje v administraci. Repo je zdroj pravdy pro kód, ne pro běžící web.
+- **Agent nikdy nenasazuje přes admin / File Manager / computer-use.** Když jsou styly hotové: vypsat Julie seznam souborů k uploadu; po jejím nahlášení nových `?v=` aktualizovat `VERSIONS.md`.
 - Výpis složek na Shoptetu je vypnutý (GET na složku vrací 404). Jednotlivé soubory jdou číst po URL (200) → názvy souborů nelze „proklikat", je třeba je znát.
+- Aktuální cache-bust verze: `VERSIONS.md`.
 
 ### Shoptet přebíjí styly (časté gotchas)
 Shoptet přidává vlastní CSS (z CDN, není v repu v textové podobě) a často přebíjí custom styly. Ověřené případy na titulce:
@@ -35,5 +37,5 @@ Shoptet styly se projeví jen na živé URL. Pro lokální ladění: stáhnout �
 
 ### Přístupy / secrets
 - Analýza veřejného webu (`759082.myshoptet.com`) i Figmy funguje bez přihlášení.
-- Pro administraci jsou k dispozici secrets `SHOPTET_ADMIN_USER` / `SHOPTET_ADMIN_PASS` (čtení nastavení, procházení správce souborů). Jde o ostrý e-shop — v administraci postupovat opatrně (default read-only), nic nepublikovat bez výslovného pokynu.
+- Admin File Manager / login **není** součást agent deploy workflow (Julie only). I kdyby existovaly secrets, **nepoužívat** je k uploadu CSS ani k úpravě HTML head.
 - Network access: je potřeba odchozí přístup na `*.figma.com`, `*.myshoptet.com`, `haaro-naturo.cz` a (jednorázově) CDN fontů.
