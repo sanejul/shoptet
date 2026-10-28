@@ -8,6 +8,9 @@ Vlastní design (theme) pro e-shop **Haaro Naturo** na platformě **Shoptet** (�
 - `styles/style.css` — přebíjení výchozích stylů Shoptetu (navigace, patička, košík, produktové stránky) + dosud i titulka.
 - `styles/fonts.css` — `@font-face` definice, fonty jsou **base64 vložené přímo v CSS** (žádné externí CDN). Aktuálně Fabrikat + Inter (Inter = běžný text dle nového návrhu, vč. latin-ext kvůli češtině).
 
+### Git
+- Po dokončení probíhajících PR: práce jen na **`main`** — žádné nové feature branche / PR, pokud Julie výslovně neřekne jinak. Commitovat přímo na `main`.
+
 ### Jak nasazení funguje (důležité)
 - CSS/JS a obrázky se nahrávají do správce souborů Shoptetu a referencují se absolutní URL `https://759082.myshoptet.com/user/documents/upload/...`.
 - Změny v tomto repu se **needeployují automaticky** — **Julie** je ručně nahraje v administraci. Repo je zdroj pravdy pro kód, ne pro běžící web.
